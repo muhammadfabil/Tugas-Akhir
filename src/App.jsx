@@ -1,6 +1,6 @@
 
 
-import AppRouter from "./Router.jsx";
+import AppRouter from "./router.jsx";
 import PWABadge from "./PWABadge.jsx";
 import "./App.css";
 
