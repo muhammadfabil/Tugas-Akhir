@@ -1,17 +1,14 @@
-'use client'
 
 
+import AppRouter from "./Router.jsx";
 import PWABadge from "./PWABadge.jsx";
 import "./App.css";
-import SplashCursor from "../SplashCursor/SplashCursor.jsx";
+
 
 function App() {
-  
-
   return (
-    <div className="bg-black">
-    <h1>halo</h1>
-    <SplashCursor />
+    <div className="bg-white min-h-screen">
+      <AppRouter />
     </div>
   );
 }
