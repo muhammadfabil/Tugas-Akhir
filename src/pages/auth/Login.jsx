@@ -1,60 +1,62 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import SplashCursor from '../../UI/SplashCursor/SplashCursor'
+import useAuth  from "../../context/useAuth";
 
 
 const Login = () => {
-  const navigate = useNavigate();
+  const { login } = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleLogin = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Dummy credentials
-    const users = {
-      admin: { role: "admin" },
-      dosen: { role: "dosen" },
-      mahasiswa: { role: "mahasiswa" },
-    };
 
-    if (users[username] && password === "password123") {
-      const role = users[username].role;
-      navigate(`/${role}`);
+    // Cek akun dummy
+    if (username === "admin123" && password === "adminpass") {
+      login(username, "admin");
+    } else if (username === "dosen123" && password === "dosenpass") {
+      login(username, "dosen");
+    } else if (username === "mahasiswa123" && password === "mahasiswapass") {
+      login(username, "mahasiswa");
     } else {
-      alert("Username atau password salah!");
+      setError("Username atau Password salah!");
     }
   };
 
   return (
-    
-    <div className="flex justify-center items-center h-screen bg-white">
-      <div className="w-full max-w-sm p-6 bg-gray-100 shadow-lg rounded-lg">
-        <h2 className="text-2xl font-bold text-center mb-4 text-primary">Login</h2>
-        <form onSubmit={handleLogin} className="space-y-4">
-          <input
-            type="text"
-            placeholder="Username"
-            className="w-full p-2 border border-gray-300 rounded"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="w-full p-2 border border-gray-300 rounded"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button
-            type="submit"
-            className="w-full bg-blue-700 text-white p-2 rounded hover:bg-white hover:text-blue-700 border border-blue-700"
-          >
-            Login
-          </button>
-        </form>
-      </div>
-      <SplashCursor />
+    <div className="min-h-screen flex items-center justify-center bg-white">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-gray-100 p-8 rounded-lg shadow-md w-full max-w-sm"
+      >
+        <h2 className="text-center text-3xl text-blue-500">SIMANTAP TEKNIK INFORMATIKA ITERA</h2>
+        <h2 className="text-2xl font-bold text-primary mb-6 text-center">
+          Login Sistem Antrian
+        </h2>
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="w-full p-3 mb-4 rounded-lg border"
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full p-3 mb-4 rounded-lg border"
+          required
+        />
+        <button
+          type="submit"
+          className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-white hover:text-blue-500 cursor-pointer border-bl hover:border-blue-500"
+        >
+          Login
+        </button>
+      </form>
     </div>
   );
 };
