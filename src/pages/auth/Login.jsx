@@ -1,5 +1,7 @@
 import { useState } from "react";
 import useAuth  from "../../context/useAuth";
+// import SplashCursor from '../../UI/SplashCursor/SplashCursor'
+
 
 
 const Login = () => {
@@ -55,8 +57,9 @@ const Login = () => {
           className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-white hover:text-blue-500 cursor-pointer border-bl hover:border-blue-500"
         >
           Login
-        </button>
+        </button> 
       </form>
+      {/* <SplashCursor /> */}
     </div>
   );
 };
