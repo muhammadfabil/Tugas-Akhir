@@ -9,7 +9,7 @@ const dosenPembimbing = [
   {
     nama: "Dr. Aulia Rahman",
     jadwal: [
-      { hari: "Senin", kuota: 2 },
+      { hari: "Senin", kuota: 0 },
       { hari: "Kamis", kuota: 3 },
     ],
   },

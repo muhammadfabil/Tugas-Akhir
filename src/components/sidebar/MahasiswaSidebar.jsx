@@ -6,7 +6,8 @@ const MahasiswaSidebar = () => (
     <ul className="space-y-4">
       <li><Link to="/mahasiswa">Dashboard</Link></li>
       <li><Link to="/mahasiswa/bimbingan">Pilih Dosen Pembimbing</Link></li>
-      <li><Link to="/mahasiswa/pelayanan">Pelayanan Administrasi</Link></li>
+      <li><Link to="/mahasiswa/administrasi">Pelayanan Administrasi</Link></li>
+      <li><Link to="/mahasiswa/antrian">antrean</Link></li>
     </ul>
   </div>
 );
