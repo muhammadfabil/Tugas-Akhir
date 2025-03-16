@@ -1,11 +1,6 @@
 import './PWABadge.css'
-import { useEffect } from 'react'
+
 import { useRegisterSW } from "virtual:pwa-register/react"
-import {
-  registerServiceWorker,
-  requestNotificationPermission,
-  sendLocalNotification,
-} from './utils/notification'
 
 function PWABadge() {
   // check for updates every hour
@@ -37,15 +32,6 @@ function PWABadge() {
     setNeedRefresh(false)
   }
 
-  useEffect(() => {
-    registerServiceWorker();
-    requestNotificationPermission();
-  }, []);
-
-  const handleNotify = () => {
-    sendLocalNotification('Notifikasi Bimbingan', 'Antrian bimbingan Anda sudah dekat!');
-  };
-
   return (
     <div className="PWABadge" role="alert" aria-labelledby="toast-message">
       { (offlineReady || needRefresh)
@@ -62,15 +48,6 @@ function PWABadge() {
           </div>
         </div>
       )}
-      
-      <div className="p-4 text-center">
-        <button
-          onClick={handleNotify}
-          className="bg-[#1277C9] text-white p-2 rounded-2xl shadow-md"
-        >
-          Kirim Notifikasi Tes
-        </button>
-      </div>
     </div>
   )
 }
